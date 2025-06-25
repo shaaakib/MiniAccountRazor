@@ -1,0 +1,40 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Accounts List";
+}
+
+<h2>Accounts List</h2>
+
+<div class="d-flex justify-content-end mb-3">
+    <a asp-page="/accountant/Create" class="btn btn-primary">+ Create New Account</a>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Code</th>
+            <th scope="col">Type</th>
+            <th scope="col">Parent</th>
+            <th scope="col">Active</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var acc in Model.Accounts)
+        {
+            <tr>
+                <td>@acc.AccountName</td>
+                <td>@acc.AccountCode</td>
+                <td>@acc.AccountType</td>
+                <td>@acc.ParentAccount?.AccountName</td>
+                <td>@(acc.IsActive ? "Yes" : "No")</td>
+                <td>
+                    <a asp-page="Edit" asp-route-id="@acc.Id" class="btn btn-sm btn-warning">Edit</a>
+                    <a asp-page="Delete" asp-route-id="@acc.Id" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

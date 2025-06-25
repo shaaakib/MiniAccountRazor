@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using MiniAccount.Models;
 
 namespace MiniAccount.Data
 {
@@ -10,5 +11,7 @@ namespace MiniAccount.Data
         {
             
         }
+
+        public DbSet<Account> Accounts { get; set; }
     }
 }

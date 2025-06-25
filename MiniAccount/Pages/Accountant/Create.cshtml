@@ -1,0 +1,57 @@
+﻿@page
+@model CreateModel
+@{
+    ViewData["Title"] = "Create Account";
+}
+
+<h2 class="mb-4">Create Account</h2>
+
+<div class="card shadow p-4">
+    <form method="post">
+        <div class="mb-3">
+            <label asp-for="Account.AccountName" class="form-label">Account Name</label>
+            <input asp-for="Account.AccountName" class="form-control" />
+            <span asp-validation-for="Account.AccountName" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Account.AccountCode" class="form-label">Account Code</label>
+            <input asp-for="Account.AccountCode" class="form-control" />
+            <span asp-validation-for="Account.AccountCode" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Account.AccountType" class="form-label">Account Type</label>
+            <select asp-for="Account.AccountType" class="form-select">
+                <option value="">-- Select Type --</option>
+                <option>Asset</option>
+                <option>Liability</option>
+                <option>Income</option>
+                <option>Expense</option>
+                <option>Equity</option>
+            </select>
+            <span asp-validation-for="Account.AccountType" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Account.ParentAccountId" class="form-label">Parent Account</label>
+            <select asp-for="Account.ParentAccountId" asp-items="Model.ParentAccounts" class="form-select">
+                <option value="">-- None --</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Account.Description" class="form-label">Description</label>
+            <textarea asp-for="Account.Description" class="form-control" rows="3"></textarea>
+        </div>
+
+        <div class="form-check mb-3">
+            <input type="checkbox" asp-for="Account.IsActive" class="form-check-input" />
+            <label asp-for="Account.IsActive" class="form-check-label">Active?</label>
+        </div>
+
+        <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-success">💾 Save</button>
+        </div>
+    </form>
+</div>

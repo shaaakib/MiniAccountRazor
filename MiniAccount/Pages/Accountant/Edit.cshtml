@@ -1,0 +1,56 @@
+﻿@page "{id:int}"
+@model EditModel
+@{
+    ViewData["Title"] = "Edit Account";
+}
+
+<h2>Edit Account</h2>
+
+<div class="card shadow p-4">
+    <form method="post">
+        <input type="hidden" asp-for="Account.Id" />
+
+        <div class="mb-3">
+            <label asp-for="Account.AccountName" class="form-label"></label>
+            <input asp-for="Account.AccountName" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Account.AccountCode" class="form-label"></label>
+            <input asp-for="Account.AccountCode" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Account.AccountType" class="form-label"></label>
+            <select asp-for="Account.AccountType" class="form-select">
+                <option>Asset</option>
+                <option>Liability</option>
+                <option>Income</option>
+                <option>Expense</option>
+                <option>Equity</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Account.ParentAccountId" class="form-label">Parent Account</label>
+            <select asp-for="Account.ParentAccountId" asp-items="Model.ParentAccounts" class="form-select">
+                <option value="">-- None --</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Account.Description" class="form-label"></label>
+            <textarea asp-for="Account.Description" class="form-control"></textarea>
+        </div>
+
+        <div class="form-check mb-3">
+            <input asp-for="Account.IsActive" class="form-check-input" />
+            <label asp-for="Account.IsActive" class="form-check-label"></label>
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <a asp-page="Index" class="btn btn-secondary">Back</a>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+    </form>
+</div>
