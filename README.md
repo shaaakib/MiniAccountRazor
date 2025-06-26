@@ -1,4 +1,4 @@
-#  MiniAccount - ASP.NET Core MVC Accounting App
+#  MiniAccount - ASP.NET Core Razor Pages Accounting App
 
 MiniAccount is a lightweight accounting management system built with **ASP.NET Core Razor Pages**, **Entity Framework Core**, and **SQL Server**. It allows users to manage accounts, vouchers (journal, payment, receipt), and generate Excel reports.
 
