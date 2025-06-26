@@ -1,10 +1,35 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Welcome to MiniAccount";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h1 class="display-5 fw-bold text-primary">🧾 MiniAccount</h1>
+        <p class="lead text-muted">Simplify your accounting with role-based access, vouchers, and more.</p>
+        <hr class="w-25 mx-auto" />
+    </div>
+
+    <div class="row g-5">
+        <div class="d-flex justify-content-center">
+            <div class="col-md-4">
+                <div class="card shadow-sm border-0 h-100">
+                    <div class="card-body text-center">
+                        <h3 class="card-title">📚 Chart of Accounts</h3>
+                        <p class="card-text">Create, edit, and manage your accounts with parent-child relations.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow-sm border-0 h-100">
+                    <div class="card-body text-center">
+                        <h3 class="card-title">🧾 Vouchers</h3>
+                        <p class="card-text">Add payment, receipt, and journal vouchers easily.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

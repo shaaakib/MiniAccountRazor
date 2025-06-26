@@ -1,13 +1,16 @@
 ﻿// Pages/Vouchers/Create.cshtml.cs
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using MiniAccount.Data;
 using MiniAccount.Models;
-using Microsoft.EntityFrameworkCore;
+using MiniAccount.Utility;
 
 namespace MiniAccount.Pages.Vouchers
 {
+    [Authorize(Roles = SD.Role_Accountant + "," + SD.Role_Admin)]
     public class CreateModel : PageModel
     {
         private readonly ApplicationDbContext _context;

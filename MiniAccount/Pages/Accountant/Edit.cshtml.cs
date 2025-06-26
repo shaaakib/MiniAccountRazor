@@ -1,11 +1,14 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MiniAccount.Data;
 using MiniAccount.Models;
+using MiniAccount.Utility;
 
 namespace MiniAccount.Pages.Accountant
 {
+    [Authorize(Roles = SD.Role_Admin)]
     public class EditModel : PageModel
     {
         private readonly ApplicationDbContext _context;
