@@ -1,0 +1,44 @@
+﻿@page "{id:int}"
+@model MiniAccount.Pages.Vouchers.DetailsModel
+@{
+    ViewData["Title"] = "Voucher Details";
+}
+
+<div class="card shadow p-4 mb-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="mb-0">Voucher Details</h3>
+        <a class="btn btn-outline-primary" asp-page-handler="DownloadExcel" asp-route-id="@Model.Voucher.Id">Download Excel</a>
+    </div>
+
+    <table class="table table-bordered">
+        <tbody>
+            <tr><th style="width: 200px;">ID</th><td>@Model.Voucher.Id</td></tr>
+            <tr><th>Type</th><td>@Model.Voucher.VoucherType</td></tr>
+            <tr><th>Reference No</th><td>@Model.Voucher.ReferenceNo</td></tr>
+            <tr><th>Date</th><td>@Model.Voucher.VoucherDate?.ToString("dd MMM yyyy")</td></tr>
+        </tbody>
+    </table>
+
+    <h5 class="mt-4">Voucher Entries</h5>
+    <table class="table table-striped table-hover border">
+        <thead class="table-light">
+            <tr>
+                <th>Account</th>
+                <th class="text-end">Debit</th>
+                <th class="text-end">Credit</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var entry in Model.Voucher.Entries)
+            {
+                <tr>
+                    <td>@entry.Account.AccountName</td>
+                    <td class="text-end">@entry.DebitAmount?.ToString("N2")</td>
+                    <td class="text-end">@entry.CreditAmount?.ToString("N2")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a class="btn btn-secondary mt-3" asp-page="Index">Back to List</a>
+</div>

@@ -13,5 +13,7 @@ namespace MiniAccount.Data
         }
 
         public DbSet<Account> Accounts { get; set; }
+        public DbSet<Voucher> Vouchers { get; set; }
+        public DbSet<VoucherEntry> VoucherEntries { get; set; }
     }
 }
