@@ -49,23 +49,20 @@ namespace MiniAccount.Pages.Vouchers
 
             if (!ModelState.IsValid)
             {
-                foreach (var entry in ModelState)
-                {
-                    foreach (var error in entry.Value.Errors)
-                    {
-                        Console.WriteLine($"{entry.Key} => {error.ErrorMessage}");
-                    }
-                }
-
                 return Page();
             }
 
-            Voucher.Entries = VoucherEntries;
+            // 1️⃣ Insert Voucher
+            int newVoucherId = await _context.InsertVoucherUsingSPAsync(Voucher);
 
-            _context.Vouchers.Add(Voucher);
-            await _context.SaveChangesAsync();
+            // 2️⃣ Insert Each VoucherEntry with that voucher ID
+            foreach (var entry in VoucherEntries)
+            {
+                entry.VoucherId = newVoucherId;
+                await _context.InsertVoucherEntryUsingSPAsync(entry);
+            }
 
-            return RedirectToPage("Index"); // বা Success পেজে যাও
+            return RedirectToPage("Index");
         }
     }
 }

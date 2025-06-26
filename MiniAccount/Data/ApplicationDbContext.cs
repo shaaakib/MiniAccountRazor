@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using MiniAccount.Models;
 using MiniAccount.Models.ViewModel;
@@ -24,6 +25,7 @@ namespace MiniAccount.Data
         {
             return await AccountViewModels.FromSqlRaw("EXEC sp_ManageChartOfAccounts").ToListAsync();
         }
+
         public void CreateAccountUsingSP(Account account)
         {
             Database.ExecuteSqlRaw(
@@ -58,6 +60,37 @@ namespace MiniAccount.Data
         public async Task<List<Voucher>> GetAllVouchersUsingSPAsync()
         {
             return await Vouchers.FromSqlRaw("EXEC sp_GetAllVouchers").ToListAsync();
+        }
+
+        public async Task<int> InsertVoucherUsingSPAsync(Voucher voucher)
+        {
+            var voucherIdParam = new SqlParameter
+            {
+                ParameterName = "@NewVoucherId",
+                SqlDbType = System.Data.SqlDbType.Int,
+                Direction = System.Data.ParameterDirection.Output
+            };
+
+            await Database.ExecuteSqlRawAsync(
+                "EXEC sp_InsertVoucher @VoucherType, @ReferenceNo, @VoucherDate, @NewVoucherId OUTPUT",
+                new SqlParameter("@VoucherType", voucher.VoucherType ?? ""),
+                new SqlParameter("@ReferenceNo", voucher.ReferenceNo ?? ""),
+                new SqlParameter("@VoucherDate", voucher.VoucherDate ?? DateTime.Now),
+                voucherIdParam
+            );
+
+            return (int)voucherIdParam.Value;
+        }
+
+        public async Task InsertVoucherEntryUsingSPAsync(VoucherEntry entry)
+        {
+            await Database.ExecuteSqlRawAsync(
+                "EXEC sp_InsertVoucherEntry @VoucherId, @AccountId, @DebitAmount, @CreditAmount",
+                new SqlParameter("@VoucherId", entry.VoucherId),
+                new SqlParameter("@AccountId", entry.AccountId),
+                new SqlParameter("@DebitAmount", entry.DebitAmount ?? 0),
+                new SqlParameter("@CreditAmount", entry.CreditAmount ?? 0)
+            );
         }
     }
 }
