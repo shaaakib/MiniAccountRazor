@@ -21,31 +21,31 @@ MiniAccount is a lightweight accounting management system built with **ASP.NET C
 ![Home Page](screenshots/HomePage.png)
 
 ###  Accountant List Page
-![Accountant List Page](screenshots/AccountantListPage.png)
+![Accountant List Page](MiniAccount/screenshots/AccountantListPage.png)
 
 ###  Accountant Crate Page
-![Accountant Crate Page](screenshots/AccountantCreatePage.png)
+![Accountant Crate Page](MiniAccount/screenshots/AccountantCreatePage.png)
 
 ###  Accountant Edit Page
-![Accountant Edit Page](screenshots/AccountantEditPage.png)
+![Accountant Edit Page](MiniAccount/screenshots/AccountantEditPage.png)
 
 ###  Accountant Delete Page
-![Accountant Delete Page](screenshots/AccountantDeletePage.png)
+![Accountant Delete Page](MiniAccount/screenshots/AccountantDeletePage.png)
 
 ###  Voucher List Page
-![Voucher List Page](screenshots/VoucherListPage.png)
+![Voucher List Page](MiniAccount/screenshots/VoucherListPage.png)
 
 ###  Voucher Create Page
-![Voucher Create Page](screenshots/VoucherCreatePage.png)
+![Voucher Create Page](MiniAccount/screenshots/VoucherCreatePage.png)
 
 ###  Voucher Details Page
-![Voucher Details Page](screenshots/VoucherDetailsPage.png)
+![Voucher Details Page](MiniAccount/screenshots/VoucherDetailsPage.png)
 
 ###  Manage Account Page
-![Manage Account Page](screenshots/ManageAccountPage.png)
+![Manage Account Page](MiniAccount/screenshots/ManageAccountPage.png)
 
 ###  Excel Download
-![Excel Output](screenshots/ExcelOutput.png)
+![Excel Output](MiniAccount/screenshots/ExcelOutput.png)
 
 >  Replace `/screenshots/*.png` with actual screenshot files in the `screenshots` folder.
 
