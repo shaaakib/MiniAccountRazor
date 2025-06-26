@@ -17,14 +17,35 @@ MiniAccount is a lightweight accounting management system built with **ASP.NET C
 
 ##  Screenshots
 
-###  Dashboard / Voucher List
-![Voucher List](screenshots/voucher-list.png)
+###  Home Page
+![Home Page](screenshots/HomePage.png)
 
-###  Create Voucher
-![Create Voucher](screenshots/create-voucher.png)
+###  Accountant List Page
+![Accountant List Page](screenshots/AccountantListPage.png)
+
+###  Accountant Crate Page
+![Accountant Crate Page](screenshots/AccountantCreatePage.png)
+
+###  Accountant Edit Page
+![Accountant Edit Page](screenshots/AccountantEditPage.png)
+
+###  Accountant Delete Page
+![Accountant Delete Page](screenshots/AccountantDeletePage.png)
+
+###  Voucher List Page
+![Voucher List Page](screenshots/VoucherListPage.png)
+
+###  Voucher Create Page
+![Voucher Create Page](screenshots/VoucherCreatePage.png)
+
+###  Voucher Details Page
+![Voucher Details Page](screenshots/VoucherDetailsPage.png)
+
+###  Manage Account Page
+![Manage Account Page](screenshots/ManageAccountPage.png)
 
 ###  Excel Download
-![Excel Output](screenshots/excel-voucher.png)
+![Excel Output](screenshots/ExcelOutput.png)
 
 >  Replace `/screenshots/*.png` with actual screenshot files in the `screenshots` folder.
 
