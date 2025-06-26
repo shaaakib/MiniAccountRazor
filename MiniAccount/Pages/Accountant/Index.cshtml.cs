@@ -16,15 +16,6 @@ namespace MiniAccount.Pages.Accountant
             _db = db;
         }
 
-        //public List<Account> Accounts { get; set; }
-
-        //public void OnGet()
-        //{
-        //    Accounts = _context.Accounts
-        //        .Include(a => a.ParentAccount)
-        //        .ToList();
-        //}
-
         public List<AccountViewModel> Accounts { get; set; }
 
         public void OnGet()

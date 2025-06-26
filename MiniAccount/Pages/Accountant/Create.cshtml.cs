@@ -38,19 +38,5 @@ namespace MiniAccount.Pages.Accountant
 
             return RedirectToPage("Index");
         }
-
-        //public IActionResult OnPost()
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        ParentAccounts = new SelectList(_db.Accounts.ToList(), "Id", "AccountName");
-        //        return Page();
-        //    }
-
-        //    _db.Accounts.Add(Account);
-        //    _db.SaveChanges();
-
-        //    return RedirectToPage("Index");
-        //}
     }
 }

@@ -40,9 +40,10 @@ namespace MiniAccount.Pages.Accountant
                 return Page();
             }
 
-            _context.Accounts.Update(Account);
-            _context.SaveChanges();
+            _context.UpdateAccountUsingSP(Account); // Stored Procedure call
+
             return RedirectToPage("Index");
         }
+
     }
 }
