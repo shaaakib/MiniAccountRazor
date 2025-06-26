@@ -18,6 +18,14 @@ namespace MiniAccount.Data
         public DbSet<Voucher> Vouchers { get; set; }
         public DbSet<VoucherEntry> VoucherEntries { get; set; }
         public DbSet<AccountViewModel> AccountViewModels { get; set; }
+        public DbSet<VoucherDetailsViewModel> VoucherDetailsViewModels { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<VoucherDetailsViewModel>().HasNoKey(); 
+        }
 
         // Method to get all Accounts using stored procedure
 
@@ -91,6 +99,13 @@ namespace MiniAccount.Data
                 new SqlParameter("@DebitAmount", entry.DebitAmount ?? 0),
                 new SqlParameter("@CreditAmount", entry.CreditAmount ?? 0)
             );
+        }
+
+        public async Task<List<VoucherDetailsViewModel>> GetVoucherDetailsAsync(int voucherId)
+        {
+            return await this.Set<VoucherDetailsViewModel>()
+                .FromSqlRaw("EXEC sp_GetVoucherDetails @p0", voucherId)
+                .ToListAsync();
         }
     }
 }

@@ -52,10 +52,10 @@ namespace MiniAccount.Pages.Vouchers
                 return Page();
             }
 
-            // 1️⃣ Insert Voucher
+            // Insert Voucher
             int newVoucherId = await _context.InsertVoucherUsingSPAsync(Voucher);
 
-            // 2️⃣ Insert Each VoucherEntry with that voucher ID
+            // Insert Each VoucherEntry with that voucher ID
             foreach (var entry in VoucherEntries)
             {
                 entry.VoucherId = newVoucherId;
