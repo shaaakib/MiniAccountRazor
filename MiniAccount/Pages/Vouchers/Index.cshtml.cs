@@ -7,20 +7,18 @@ namespace MiniAccount.Pages.Vouchers
 {
     public class IndexModel : PageModel
     {
-        private readonly ApplicationDbContext _context;
+        private readonly ApplicationDbContext _db;
 
-        public IndexModel(ApplicationDbContext context)
+        public IndexModel(ApplicationDbContext db)
         {
-            _context = context;
+            _db = db;
         }
 
         public List<Voucher> Vouchers { get; set; }
 
         public async Task OnGetAsync()
         {
-            Vouchers = await _context.Vouchers
-                .OrderByDescending(v => v.Id)
-                .ToListAsync();
+            Vouchers = await _db.GetAllVouchersUsingSPAsync();
         }
     }
 }

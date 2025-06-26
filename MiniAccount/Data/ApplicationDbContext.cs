@@ -18,7 +18,12 @@ namespace MiniAccount.Data
         public DbSet<VoucherEntry> VoucherEntries { get; set; }
         public DbSet<AccountViewModel> AccountViewModels { get; set; }
 
+        // Method to get all Accounts using stored procedure
 
+        public async Task<List<AccountViewModel>> GetAllAccountsUsingSPAsync()
+        {
+            return await AccountViewModels.FromSqlRaw("EXEC sp_ManageChartOfAccounts").ToListAsync();
+        }
         public void CreateAccountUsingSP(Account account)
         {
             Database.ExecuteSqlRaw(
@@ -47,6 +52,12 @@ namespace MiniAccount.Data
         public void DeleteAccountUsingSP(int id)
         {
             Database.ExecuteSqlRaw("EXEC sp_DeleteAccount @p0", id);
+        }
+
+        // Method to get all Vouchers using stored procedure
+        public async Task<List<Voucher>> GetAllVouchersUsingSPAsync()
+        {
+            return await Vouchers.FromSqlRaw("EXEC sp_GetAllVouchers").ToListAsync();
         }
     }
 }

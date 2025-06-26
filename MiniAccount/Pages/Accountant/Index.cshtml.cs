@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using MiniAccount.Data;
 using MiniAccount.Models;
 using MiniAccount.Models.ViewModel;
+using System.Threading.Tasks;
 
 namespace MiniAccount.Pages.Accountant
 {
@@ -18,11 +19,9 @@ namespace MiniAccount.Pages.Accountant
 
         public List<AccountViewModel> Accounts { get; set; }
 
-        public void OnGet()
+        public async Task OnGetAsync()
         {
-            Accounts = _db.AccountViewModels
-                .FromSqlRaw("EXEC sp_ManageChartOfAccounts")
-                .ToList();
+            Accounts = await _db.GetAllAccountsUsingSPAsync();
         }
     }
 }
