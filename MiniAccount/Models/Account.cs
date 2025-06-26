@@ -20,8 +20,6 @@ namespace MiniAccount.Models
         [Display(Name = "Parent Account")]
         public int? ParentAccountId { get; set; }
 
-        public string? Description { get; set; }
-
         public bool IsActive { get; set; }
 
         [ForeignKey("ParentAccountId")]

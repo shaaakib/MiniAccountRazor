@@ -8,11 +8,11 @@ namespace MiniAccount.Pages.Accountant
 {
     public class CreateModel : PageModel
     {
-        private readonly ApplicationDbContext _context;
+        private readonly ApplicationDbContext _db;
 
-        public CreateModel(ApplicationDbContext context)
+        public CreateModel(ApplicationDbContext db)
         {
-            _context = context;
+            _db = db;
         }
 
         [BindProperty]
@@ -22,19 +22,19 @@ namespace MiniAccount.Pages.Accountant
 
         public void OnGet()
         {
-            ParentAccounts = new SelectList(_context.Accounts.ToList(), "Id", "AccountName");
+            ParentAccounts = new SelectList(_db.Accounts.ToList(), "Id", "AccountName");
         }
 
         public IActionResult OnPost()
         {
             if (!ModelState.IsValid)
             {
-                ParentAccounts = new SelectList(_context.Accounts.ToList(), "Id", "AccountName");
+                ParentAccounts = new SelectList(_db.Accounts.ToList(), "Id", "AccountName");
                 return Page();
             }
 
-            _context.Accounts.Add(Account);
-            _context.SaveChanges();
+            _db.Accounts.Add(Account);
+            _db.SaveChanges();
 
             return RedirectToPage("Index");
         }
