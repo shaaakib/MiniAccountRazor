@@ -19,7 +19,6 @@ namespace MiniAccount.Data
         public DbSet<AccountViewModel> AccountViewModels { get; set; }
 
 
-        //
         public void CreateAccountUsingSP(Account account)
         {
             Database.ExecuteSqlRaw(
@@ -32,7 +31,6 @@ namespace MiniAccount.Data
             );
         }
 
-        //
         public void UpdateAccountUsingSP(Account account)
         {
             Database.ExecuteSqlRaw(
@@ -44,6 +42,11 @@ namespace MiniAccount.Data
                 account.ParentAccountId,
                 account.IsActive
             );
+        }
+
+        public void DeleteAccountUsingSP(int id)
+        {
+            Database.ExecuteSqlRaw("EXEC sp_DeleteAccount @p0", id);
         }
     }
 }

@@ -29,12 +29,12 @@ namespace MiniAccount.Pages.Accountant
 
         public IActionResult OnPost()
         {
-            var acc = _context.Accounts.Find(Account.Id);
-            if (acc != null)
+            if (Account == null || Account.Id == 0)
             {
-                _context.Accounts.Remove(acc);
-                _context.SaveChanges();
+                return NotFound();
             }
+
+            _context.DeleteAccountUsingSP(Account.Id); // Call stored procedure
 
             return RedirectToPage("Index");
         }
