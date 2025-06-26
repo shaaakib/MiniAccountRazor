@@ -25,6 +25,7 @@ namespace MiniAccount.Pages.Accountant
             ParentAccounts = new SelectList(_db.Accounts.ToList(), "Id", "AccountName");
         }
 
+
         public IActionResult OnPost()
         {
             if (!ModelState.IsValid)
@@ -33,10 +34,23 @@ namespace MiniAccount.Pages.Accountant
                 return Page();
             }
 
-            _db.Accounts.Add(Account);
-            _db.SaveChanges();
+            _db.CreateAccountUsingSP(Account); // Stored Procedure call
 
             return RedirectToPage("Index");
         }
+
+        //public IActionResult OnPost()
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        ParentAccounts = new SelectList(_db.Accounts.ToList(), "Id", "AccountName");
+        //        return Page();
+        //    }
+
+        //    _db.Accounts.Add(Account);
+        //    _db.SaveChanges();
+
+        //    return RedirectToPage("Index");
+        //}
     }
 }

@@ -17,5 +17,17 @@ namespace MiniAccount.Data
         public DbSet<Voucher> Vouchers { get; set; }
         public DbSet<VoucherEntry> VoucherEntries { get; set; }
         public DbSet<AccountViewModel> AccountViewModels { get; set; }
+
+        public void CreateAccountUsingSP(Account account)
+        {
+            Database.ExecuteSqlRaw(
+                "EXEC sp_CreateAccount @p0, @p1, @p2, @p3, @p4",
+                account.AccountName,
+                account.AccountCode,
+                account.AccountType,
+                account.ParentAccountId,
+                account.IsActive
+            );
+        }
     }
 }
