@@ -18,7 +18,7 @@ MiniAccount is a lightweight accounting management system built with **ASP.NET C
 ##  Screenshots
 
 ###  Home Page
-![Home Page](screenshots/HomePage.png)
+![Home Page](MiniAccount/screenshots/HomePage.png)
 
 ###  Accountant List Page
 ![Accountant List Page](MiniAccount/screenshots/AccountantListPage.png)
